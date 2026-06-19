@@ -17,6 +17,15 @@ class SalonesAdapter (
         val numero = view.findViewById<TextView>(R.id.txtNumero)
         val estado = view.findViewById<TextView>(R.id.txtEstado)
         val hora = view.findViewById<TextView>(R.id.txtHora)
-        return super.getView(position, convertView, parent)
+        //Mostrar salon y obtener estado
+        numero.text = "Salón ${salon.numero}"
+        estado.text = salon.estado.name
+        //Mostrar los diferentes estados
+        when (salon.estado){
+            EstadoSalon.DISPONIBLE -> hora.text = "Disponible hasta ${salon.horaDisponible}"
+            EstadoSalon.OCUPADO -> hora.text = "Ocupado hasta ${salon.horaOcupado}"
+            EstadoSalon.RESERVADO -> hora.text = "Reservado hasta ${salon.horaReserva}"
+        }
+        return view
     }
 }
