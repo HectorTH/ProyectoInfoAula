@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "854830869493",
+    "project_id": "infoaula-14aed",
+    "storage_bucket": "infoaula-14aed.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:854830869493:android:00a5994304ea4c2b260ebc",
+        "android_client_info": {
+          "package_name": "com.fei.infoaula"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-wHmiPaSlLDh4h_iAK8VvMpvTVYs_6Y0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

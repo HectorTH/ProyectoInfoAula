@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_inicio"
+        android:icon="@drawable/ic_home"
+        android:title="Inicio" />
+
+    <item
+        android:id="@+id/nav_buscar"
+        android:icon="@drawable/ic_search"
+        android:title="Buscar" />
+
+    <item
+        android:id="@+id/nav_salones"
+        android:icon="@drawable/ic_folder"
+        android:title="Horarios" />
+
+    <item
+        android:id="@+id/nav_acerca"
+        android:icon="@drawable/ic_info"
+        android:title="Acerca de" />
+
+</menu>

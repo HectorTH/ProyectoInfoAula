@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_inicio"
+        android:icon="@drawable/ic_menu"
+        android:title="Inicio" />
+
+    <item
+        android:id="@+id/nav_salones"
+        android:icon="@drawable/ic_menu"
+        android:title="Aulas / Salones" />
+
+    <item
+        android:id="@+id/nav_usuarios"
+        android:icon="@drawable/ic_menu"
+        android:title="Usuarios" />
+
+    <item
+        android:id="@+id/nav_salir"
+        android:icon="@drawable/ic_menu"
+        android:title="Cerrar Sesión" />
+
+</menu>
