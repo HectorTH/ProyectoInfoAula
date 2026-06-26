@@ -1,0 +1,121 @@
+package com.fei.infoaula
+
+import android.os.Bundle
+import android.view.ViewGroup
+import android.widget.TextView
+import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+
+import com.fei.infoaula.R
+
+class Usuario : AppCompatActivity() {
+
+    private lateinit var auth: FirebaseAuth
+    private lateinit var database: FirebaseDatabase
+
+    // Componentes de la interfaz vinculados al XML
+    private lateinit var tvNombre: TextView
+    private lateinit var tvMatricula: TextView
+    private lateinit var tvCorreo: TextView
+    private lateinit var tvCarrera: TextView
+    private lateinit var tvSemestre: TextView
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContentView(R.layout.activity_usuario)
+
+        // Inicialización de instancias de Firebase
+        auth = FirebaseAuth.getInstance()
+        database = FirebaseDatabase.getInstance()
+
+        tvNombre = findViewById(R.id.tvPerfilNombre)
+
+        tvMatricula = findViewById(R.id.tvPerfilMatricula)
+        tvCorreo = findViewById(R.id.tvPerfilCorreo)
+        tvCarrera = findViewById(R.id.tvPerfilCarrera)
+        tvSemestre = findViewById(R.id.tvPerfilSemestre)
+
+        val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.tbUsuario)
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(android.R.id.content)) { _, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            toolbar?.let {
+                (it.layoutParams as? ViewGroup.MarginLayoutParams)?.let { params ->
+                    params.topMargin = systemBars.top
+                    it.layoutParams = params
+                }
+            }
+            insets
+        }
+
+        obtenerInformacionDeSesion()
+    }
+
+    private fun obtenerInformacionDeSesion() {
+        val emailActivo = auth.currentUser?.email ?: ""
+
+        if (emailActivo.isEmpty()) {
+            Toast.makeText(this, "Sesión inválida o expirada", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val esAlumno = emailActivo.contains("estudiantes", ignoreCase = true)
+        val subNodoRol = if (esAlumno) "alumnos" else "docentes"
+
+        val dbRef = database.getReference("usuarios").child(subNodoRol)
+
+        dbRef.orderByChild("correo").equalTo(emailActivo)
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+                        for (userSnapshot in snapshot.children) {
+
+                            val nombre = userSnapshot.child("nombreAlumno").value as? String
+                                ?: userSnapshot.child("nombreProfesor").value as? String
+                                ?: "No registrado"
+
+                            val identificador = userSnapshot.child("matricula").value as? String
+                                ?: userSnapshot.child("numeroPersonal").value as? String
+                                ?: "S/N"
+
+                            // Ahora sí pintará de forma segura el nombre sin caerse
+                            tvNombre.text = "Nombre: $nombre"
+                            tvCorreo.text = "Correo: $emailActivo"
+
+                            if (esAlumno) {
+                                val carrera = userSnapshot.child("carrera").value as? String ?: "Sin carrera"
+                                val semestre = userSnapshot.child("semestre").value as? String ?: "0"
+
+                                tvMatricula.text = "Matrícula: $identificador"
+                                tvCarrera.text = "Carrera: $carrera"
+                                tvSemestre.text = "Semestre: ${semestre}°"
+                            } else {
+                                val materia = userSnapshot.child("materiaPrincipal").value as? String ?: "Sin materia asignada"
+                                val cubiculo = userSnapshot.child("cubiculo").value as? String ?: "Sin cubículo"
+                                val horario = userSnapshot.child("horarioAtencion").value as? String ?: "No asignado"
+
+                                tvMatricula.text = "No. Personal: $identificador"
+                                tvCarrera.text = "Materia Principal: $materia"
+                                tvSemestre.text = "Ubicación: $cubiculo | Horario: $horario"
+                            }
+                        }
+                    } else {
+                        Toast.makeText(this@Usuario, "El correo no figura en el nodo usuarios/$subNodoRol", Toast.LENGTH_LONG).show()
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Toast.makeText(this@Usuario, "Error al conectar: ${error.message}", Toast.LENGTH_SHORT).show()
+                }
+            })
+    }
+}

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_inicio"
+            android:icon="@drawable/ic_home"
+            android:title="Inicio" />
+
+        <item
+            android:id="@+id/nav_salones"
+            android:icon="@drawable/ic_menu"
+            android:title="Aulas / Salones" />
+
+        <item
+            android:id="@+id/nav_usuarios"
+            android:icon="@drawable/ic_menu"
+            android:title="Usuarios" />
+
+        <item
+            android:id="@+id/nav_materias"
+            android:icon="@drawable/ic_menu"
+            android:title="Materias" />
+
+        <item
+            android:id="@+id/nav_profesores"
+            android:icon="@drawable/ic_menu"
+            android:title="Profesores / Maestros" />
+    </group>
+
+    <item android:title="Opciones de cuenta">
+        <menu>
+            <item
+                android:id="@+id/nav_salir"
+                android:icon="@drawable/ic_menu"
+                android:title="Cerrar Sesión" />
+        </menu>
+    </item>
+
+</menu>
