@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/etAvisoMateria"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Materia (ej: Networking)" />
+
+    <EditText
+        android:id="@+id/etAvisoHorario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Horario (ej: 09:00 - 11:00)"
+        android:layout_marginTop="8dp" />
+
+    <EditText
+        android:id="@+id/etAvisoMensaje"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Estatus (ej: Clase suspendida)"
+        android:layout_marginTop="8dp" />
+</LinearLayout>

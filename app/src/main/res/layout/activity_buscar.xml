@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://tools.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F4F9F5"
+    tools:context=".Buscar">
+
+    <!-- BARRA DE BÚSQUEDA MEJORADA (ESTILO FLOTANTE MODERNO) -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardBuscar"
+        android:layout_width="0dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        app:cardCornerRadius="28dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="16dp">
+
+            <!-- Icono de lupa nativo y elegante -->
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@android:drawable/ic_menu_search"
+                app:tint="#557A5E" />
+
+            <EditText
+                android:id="@+id/etBuscar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:hint="Buscar profesor, clase o correo..."
+                android:textColorHint="#8A9A8E"
+                android:textColor="#1B3F21"
+                android:paddingStart="12dp"
+                android:paddingEnd="4dp"
+                android:inputType="text"
+                android:textSize="16sp"
+                android:maxLines="1" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- LISTVIEW DE RESULTADOS CON PADDING INTEGRADO -->
+    <ListView
+        android:id="@+id/lvResultados"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        android:paddingHorizontal="8dp"
+        android:clipToPadding="false"
+        android:divider="#E8EFEA"
+        android:dividerHeight="1dp"
+        app:layout_constraintTop_toBottomOf="@id/cardBuscar"
+        app:layout_constraintBottom_toTopOf="@id/btnNavegarBuscar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:listitem="@android:layout/simple_list_item_2" />
+
+    <!-- BARRA DE NAVEGACIÓN INFERIOR (Consistencia visual con el Inicio) -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/btnNavegarBuscar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#CCEBCE"
+        app:backgroundTint="#CCEBCE"
+        app:itemIconSize="24dp"
+        app:itemIconTint="@color/black"
+        app:itemTextColor="@color/black"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
