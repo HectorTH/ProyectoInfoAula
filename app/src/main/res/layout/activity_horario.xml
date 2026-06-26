@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F4F9F5"
+    tools:context=".Horario">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tbHorario"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#CCEBCE"
+        android:minHeight="?attr/actionBarSize"
+        app:title="Horarios de Clases"
+        app:titleTextColor="#1B3F21"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvHorarios"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginBottom="8dp"
+        tools:listitem="@layout/item_materia"
+        app:layout_constraintTop_toBottomOf="@id/tbHorario"
+        app:layout_constraintBottom_toTopOf="@id/btnNavegarHorario"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/btnNavegarHorario"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#CCEBCE"
+        app:backgroundTint="#CCEBCE"
+        app:itemIconSize="24dp"
+        app:itemIconTint="@color/black"
+        app:itemTextColor="@color/black"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAgregarHorario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:src="@android:drawable/ic_input_add"
+        app:tint="@color/white"
+        android:backgroundTint="#4CAF50"
+        android:visibility="gone" app:layout_constraintBottom_toTopOf="@id/btnNavegarHorario"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
