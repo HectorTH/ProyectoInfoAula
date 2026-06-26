@@ -4,31 +4,72 @@ android:orientation="vertical"
 android:padding="16dp"
 android:layout_width="match_parent"
 android:layout_height="match_parent">
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
 
-<TextView
-    android:id="@+id/txtNombre"
-    android:textSize="20sp"
-    android:textStyle="bold"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"/>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-<TextView
-    android:id="@+id/txtEdificio"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"/>
+            <!-- Tarjeta principal -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp">
 
-<TextView
-    android:id="@+id/txtEstado"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"/>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-<TextView
-    android:id="@+id/txtApartadoPor"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"/>
+                    <TextView
+                        android:id="@+id/txtNombre"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/black"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
 
-<TextView
-    android:id="@+id/txtUltimaActualizacion"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"/>
+                    <TextView
+                        android:id="@+id/txtEdificio"
+                        android:textSize="18sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"/>
+
+                    <TextView
+                        android:id="@+id/txtEstado"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"/>
+
+                    <TextView
+                        android:id="@+id/txtApartadoPor"
+                        android:textSize="16sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"/>
+
+                    <TextView
+                        android:id="@+id/txtUltimaActualizacion"
+                        android:textSize="14sp"
+                        android:textColor="@android:color/darker_gray"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <!-- boton de liberación para docentes -->
+        </LinearLayout>
+    </ScrollView>
+
 </LinearLayout>

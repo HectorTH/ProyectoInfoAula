@@ -49,8 +49,12 @@ class Salones : AppCompatActivity() {
         lvDatos.setOnItemClickListener { parent, view, position, id ->
             val salonSeleccionado = listaSalones[position]
             val intent = Intent(this, DetalleSalonActivity::class.java)
-            intent.putExtra("id_salon", salonSeleccionado.nombre)
-            println("ID enviado: ${salonSeleccionado.id_salon}")
+            //Mostrar los detalles del salón
+            intent.putExtra("nombre", salonSeleccionado.nombre)
+            intent.putExtra("edificio", salonSeleccionado.edificio)
+            intent.putExtra("estado", salonSeleccionado.estado)
+            intent.putExtra("apartado_por", salonSeleccionado.apartado_por)
+            intent.putExtra("ultima_actualizacion", salonSeleccionado.ultima_actualizacion)
             startActivity(intent)
         }
 
